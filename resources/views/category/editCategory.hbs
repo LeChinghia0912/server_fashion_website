@@ -1,14 +1,14 @@
-<div class="mt-4">
+<div class='mt-4'>
     <h2>Cập nhật loại danh mục</h2>
-    <form method="POST" action="/category/{{category._id}}?_method=PUT" >
-        <div class="form-group">
-            <label for="name">Tên loại danh mục</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{category.name}}">
+    <form method='POST' action='/category/{{category._id}}?_method=PUT'>
+        <div class='form-group'>
+            <label for='name'>Tên loại danh mục</label>
+            <input type='text' class='form-control' id='name' name='name' value='{{category.name}}' />
         </div>
-        <div class="form-group">
-            <label for="image">Hình ảnh</label>
-            <input type="text" class="form-control" id="image" name="image" value="{{category.image}}">
+        <div class='form-group'>
+            <label for='image'>Hình ảnh</label>
+            <input type='text' class='form-control' id='image' name='image' value='{{category.image}}' />
         </div>
-        <button type="submit" class="btn btn-primary">Cập nhật</button>
+        <button type='submit' class='btn btn-primary'>Cập nhật</button>
     </form>
 </div>

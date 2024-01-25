@@ -1,70 +1,59 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">stt</th>
-      <th scope="col">Hình ảnh</th>
-      <th scope="col">Tùy chọn</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each sliders}}
-    <tr>
-      <th scope="row">{{sum @index 1}}</th>
-      <td>
-        <img src="{{this.image}}" alt="Hình ảnh" style="width: 300px; height: auto;"/>
-      </td>
-      <td>
-         <a href="/slider/{{this._id}}/editSlider" style="color: inherit; text-decoration: none;">
-            <button type="button" class="btn btn-primary">Sửa</button>
-         </a>
-         <a data-toggle="modal" data-id="{{this._id}}" data-target="#delete-slider-modal">
-            <button type="button" class="btn btn-danger">Xóa</button>
-         </a>
-      </td>
-    </tr>
-    {{/each}}
-  </tbody>
+<table class='table'>
+    <thead>
+        <tr>
+            <th scope='col'>stt</th>
+            <th scope='col'>Hình ảnh</th>
+            <th scope='col'>Tùy chọn</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each sliders}}
+            <tr>
+                <th scope='row'>{{sum @index 1}}</th>
+                <td>
+                    <img src='{{this.image}}' alt='Hình ảnh' style='width: 300px; height: auto;' />
+                </td>
+                <td>
+                    <a href='/slider/{{this._id}}/editSlider' style='color: inherit; text-decoration: none;'>
+                        <button type='button' class='btn btn-primary'>Sửa</button>
+                    </a>
+                    <a data-toggle='modal' data-id='{{this._id}}' data-target='#delete-slider-modal'>
+                        <button type='button' class='btn btn-danger'>Xóa</button>
+                    </a>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
 </table>
 
+{{! DELETE FORM HIDDEN SLIDER }}
+<form method='POST' name='delete-slider-form'></form>
 
-{{!-- DELETE FORM HIDDEN SLIDER --}}
-<form method="POST" name="delete-slider-form"></form>
-
-{{!-- DELETE SLIDER --}}
-<div id="delete-slider-modal" class="modal" tabindex="-1"> 
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Xóa loại danh mục</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Bạn chắc chắn muốn xóa?</p>
-      </div>
-      <div class="modal-footer">
-        <button id="btn-delete-slider" type="button" class="btn btn-danger">Xóa bỏ</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-      </div>
+{{! DELETE SLIDER }}
+<div id='delete-slider-modal' class='modal' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <h5 class='modal-title'>Xóa loại danh mục</h5>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+            </div>
+            <div class='modal-body'>
+                <p>Bạn chắc chắn muốn xóa?</p>
+            </div>
+            <div class='modal-footer'>
+                <button id='btn-delete-slider' type='button' class='btn btn-danger'>Xóa bỏ</button>
+                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Hủy</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var sliderId;
-    var deleteForm = document.forms['delete-slider-form'];
-    var btnDeleteSlider = document.getElementById('btn-delete-slider');
-    
-    $('#delete-slider-modal').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget);
-      sliderId = button.data('id');
-    });
-
-    btnDeleteSlider.onclick = function () {
-      deleteForm.action = '/slider/' + sliderId + '?_method=DELETE';
-      deleteForm.submit();
-    }
-  });
+    document.addEventListener('DOMContentLoaded', function() { var sliderId; var deleteForm =
+    document.forms['delete-slider-form']; var btnDeleteSlider = document.getElementById('btn-delete-slider');
+    $('#delete-slider-modal').on('show.bs.modal', function (event) { var button = $(event.relatedTarget); sliderId =
+    button.data('id'); }); btnDeleteSlider.onclick = function () { deleteForm.action = '/slider/' + sliderId +
+    '?_method=DELETE'; deleteForm.submit(); } });
 </script>
