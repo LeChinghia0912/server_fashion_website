@@ -18,6 +18,22 @@ class ProductController {
         }
     };
 
+    showDetailProduct = async (req, res, next) => {
+        try {
+            const details = await Product.findOne({ _id: req.params.id });
+            const responseData = mongooseToObject(details);
+
+            if (req.headers.accept && req.headers.accept.includes('application/json')) {
+                res.json({ details: responseData });
+            } else {
+                res.render('product/detailProduct', { details: responseData });
+            }
+        } catch (error) {
+            console.error('Error in showDetailProduct:', error);
+            next(error);
+        }
+    };
+
     createProduct(req, res, next) {
         res.render('product/createProduct');
     }

@@ -17,9 +17,9 @@
                     name='productCategory'
                     value='{{product.productCategory}}'
                 >
-                    <option value='Nam' {{product.productCategory}}>Nam</option>
-                    <option value='Nữ' {{product.productCategory}}>Nữ</option>
-                    <option value='Trẻ em' {{product.productCategory}}>Trẻ em</option>
+                    <option value='Nam'>{{product.productCategory}}</option>
+                    <option value='Nữ'>{{product.productCategory}}</option>
+                    <option value='Trẻ em'>{{product.productCategory}}</option>
                 </select>
             </div>
         </div>
@@ -28,6 +28,19 @@
             <label for='price'>Giá sản phẩm</label>
             <input type='text' class='form-control' id='price' name='price' value='{{product.price}}' />
         </div>
+        <div class='form-group'>
+            <label for='introduce'>Giới thiệu</label>
+            <textarea class='form-control' id='introduce' name='introduce'>{{product.introduce}}</textarea>
+        </div>
+        <div class='form-group'>
+            <label for='detail'>Chi tiết</label>
+            <textarea class='form-control' id='detail' name='detail'>{{product.detail}}</textarea>
+        </div>
+        <div class='form-group'>
+            <label for='preserve'>Bảo quản</label>
+            <textarea class='form-control' id='preserve' name='preserve'>{{product.preserve}}</textarea>
+        </div>
+
         <div class='form-group'>
             <label for='image'>Hình ảnh</label>
             <input type='text' class='form-control' id='image' name='image' value='{{product.image}}' />

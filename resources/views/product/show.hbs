@@ -5,6 +5,7 @@
             <th scope='col'>Tên sản phẩm</th>
             <th scope='col'>Loại sản phẩm</th>
             <th scope='col'>Giá sản phẩm</th>
+            <th scope='col'>Mô tả</th>
             <th scope='col'>Hình ảnh</th>
             <th scope='col'>Tùy chọn</th>
         </tr>
@@ -15,7 +16,11 @@
                 <th scope='row'>{{sum @index 1}}</th>
                 <td>{{this.name}}</td>
                 <td>{{this.productCategory}}</td>
-                <td>{{this.price}}</td>
+                <td>{{this.price}} .vnđ</td>
+                <td>
+                    <a href='/product/detailProduct/{{this._id}}'>Xem thêm</a>
+                </td>
+
                 <td>
                     <img src='{{this.image}}' alt='Hình ảnh' style='width: 100px; height: auto;' />
                 </td>

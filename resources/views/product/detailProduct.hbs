@@ -1,0 +1,24 @@
+{{#if details}}
+    <table class='table' style='width: 110%; margin: auto; margin-top: 20px;'>
+        <thead>
+            <tr>
+                <th scope='col' style='width: 200px;'>Tên</th>
+                <th scope='col' style='width: 100px;'>Hình ảnh</th>
+                <th scope='col'>Giới thiệu</th>
+                <th scope='col'>Chi tiết</th>
+                <th scope='col'>Bảo quản</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style='width: 100px'>{{details.name}}</td>
+                <td><img src='{{details.image}}' alt='Hình ảnh' style='width: 100px; height: auto;' /></td>
+                <td>{{details.introduce}}</td>
+                <td>{{details.detail}}</td>
+                <td>{{details.preserve}}</td>
+            </tr>
+        </tbody>
+    </table>
+{{else}}
+    <p>Không tìm thấy sản phẩm</p>
+{{/if}}
