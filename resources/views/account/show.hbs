@@ -1,0 +1,66 @@
+<h2>Danh sách tài khoản</h2>
+<table class='table'>
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Họ và tên</th>
+            <th>Tên đăng nhập</th>
+            <th>Email</th>
+            <th>Địa chỉ</th>
+            <th>Số điện thoại</th>
+            <th scope='col'>Tùy chọn</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each accounts}}
+            <tr>
+                <th scope='row'>{{sum @index 1}}</th>
+                <td>{{this.fullName}}</td>
+                <td>{{this.username}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.address}}</td>
+                <td>{{this.phoneNumber}}</td>
+                <td>
+                    <a href='/account/{{this._id}}/updateAccount' style='color: inherit; text-decoration: none;'>
+                        <button type='button' class='btn btn-primary'>Sửa</button>
+                    </a>
+                    <a data-toggle='modal' data-id='{{this._id}}' data-target='#delete-account-modal'>
+                        <button type='button' class='btn btn-danger'>Xóa</button>
+                    </a>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{! DELETE FORM HIDDEN ACCOUNT }}
+<form method='POST' name='delete-account-form'></form>
+
+{{! DELETE ACCOUNT }}
+<div id='delete-account-modal' class='modal' tabindex='-1'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <h5 class='modal-title'>Xóa tài khoản</h5>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+            </div>
+            <div class='modal-body'>
+                <p>Bạn chắc chắn muốn xóa?</p>
+            </div>
+            <div class='modal-footer'>
+                <button id='btn-delete-account' type='button' class='btn btn-danger'>Xóa bỏ</button>
+                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() { var accountId; var deleteForm =
+    document.forms['delete-account-form']; var btnDeleteAccount = document.getElementById('btn-delete-account');
+    $('#delete-account-modal').on('show.bs.modal', function (event) { var button = $(event.relatedTarget); accountId =
+    button.data('id'); }); btnDeleteAccount.onclick = function () { deleteForm.action = '/account/' + accountId +
+    '?_method=DELETE'; deleteForm.submit(); } });
+</script>
